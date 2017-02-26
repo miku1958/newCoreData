@@ -21,16 +21,20 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	newCoreData * cd = [newCoreData coreDataWithModelName:@"Model"];
 	Abc *abc = [cd createObjectWihtEntityName:@"Abc"];
-	abc.stud = @"abc";
+	abc.stud = @"newStud";
 	[cd updateDataBase];
 	NSFetchRequest *request = [Abc fetchRequest];
 	
 	NSArray *array = [cd selectWithRequest:request];
+	
 	[array enumerateObjectsUsingBlock:^(Abc* obj, NSUInteger idx, BOOL * _Nonnull stop) {
-		[cd deleteObject:obj];
-//		obj.stud = @"efg";
+//删除对象：
+		//[cd deleteObject:obj];
+//修改对象的属性：
+		//obj.stud = @"efg";
 	}];
-//	[cd updateDataBase];
+//修改对象后保存数据库
+	//[cd updateDataBase];
 }
 
 
